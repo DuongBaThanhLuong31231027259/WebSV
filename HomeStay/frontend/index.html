@@ -1,44 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeStay</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Danh sách người dùng</title>
+    <style>
+        table { border-collapse: collapse; width: 60%; margin: 20px auto; }
+        th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
+        th { background: #f2f2f2; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to HomeStay</h1>
-    </header>
-    <main>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>HomeStay is your perfect getaway for a relaxing stay.</p>
-        </section>
-        <section id="services">
-            <h2>Our Services</h2>
-            <ul>
-                <li>Comfortable Rooms</li>
-                <li>Free Wi-Fi</li>
-                <li>24/7 Customer Support</li>
-            </ul>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <form id="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 HomeStay. All rights reserved.</p>
-    </footer>
-    <script src="js/main.js"></script>
+    <h2 style="text-align:center;">Danh sách người dùng</h2>
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <th>Email</th>
+                <th>Tuổi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dữ liệu sẽ được thêm ở đây -->
+        </tbody>
+    </table>
+    <script>
+        fetch('https://techzone-uzz8.onrender.com/api/users')
+            .then(res => res.json())
+            .then(users => {
+                const tbody = document.querySelector('#usersTable tbody');
+                users.forEach(user => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.age ?? ''}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(err => {
+                document.body.innerHTML += '<p style="color:red;text-align:center;">Không thể tải danh sách người dùng.</p>';
+            });
+    </script>
 </body>
 </html>
