@@ -1,21 +1,34 @@
-require('dotenv').config();
-const mysql = require('mysql');
+// db.js
+const mongoose = require('mongoose');
 
-const dbConfig = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+// Lấy chuỗi kết nối từ biến môi trường (đã cấu hình với dotenv)
+const mongoURI = process.env.MONGODB_URI;
+
+// Hàm kết nối đến MongoDB
+const connectDB = async () => {
+    try {
+        await mongoose.connect(mongoURI, {
+            useNewUrlParser: true, // Tùy chọn này để tránh cảnh báo (deprecated)
+            useUnifiedTopology: true, // Tùy chọn này cũng để tránh cảnh báo
+            // useCreateIndex: true, // Tùy chọn này cũng để tránh cảnh báo (nếu bạn dùng index)
+            // useFindAndModify: false, // Tùy chọn này cũng để tránh cảnh báo (nếu bạn dùng findOneAndUpdate, findOneAndDelete)
+        });
+
+        console.log('MongoDB đã kết nối thành công!');
+    } catch (err) {
+        console.error('Lỗi kết nối MongoDB:', err);
+        process.exit(1); // Thoát ứng dụng nếu kết nối thất bại
+    }
 };
 
-const connection = mysql.createConnection(dbConfig);
-
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.stack);
-        return;
+// Ngắt kết nối khi ứng dụng tắt (tùy chọn)
+const disconnectDB = async () => {
+    try {
+        await mongoose.disconnect();
+        console.log('MongoDB đã ngắt kết nối.');
+    } catch (err) {
+        console.error('Lỗi ngắt kết nối MongoDB:', err);
     }
-    console.log('Connected to the database as ID:', connection.threadId);
-});
+};
 
-module.exports = connection;
+module.exports = { connectDB, disconnectDB };
