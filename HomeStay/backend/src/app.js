@@ -1,73 +1,85 @@
-// app.js (hoặc server.js)
+// app.js - Phiên bản cập nhật
 
-// 1. Nạp biến môi trường (luôn ở đầu)
+// 1. Nạp biến môi trường
 require('dotenv').config();
 
-// 2. Import các thư viện cần thiết
+// 2. Import các thư viện
 const express = require('express');
-const app = express();
-const { connectDB } = require('./db/connection'); // Import hàm kết nối DB
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const { connectDB } = require('./db/connection');
 
-// 3. Import các file routes của bạn
-const userRoutes = require('./routes/userRoutes');
-//const productRoutes = require('./routes/productRoutes');
-// Nếu bạn có một file index.js trong thư mục routes để gom tất cả lại:
-// const apiRoutes = require('./routes/index');
+// 3. Import các file routes của dự án
+const khachhangRoutes = require('./routes/khachhang.routes');
+const phongRoutes = require('./routes/phong.routes');
+// const doinguRoutes = require('./routes/doingu.routes'); // Ví dụ khi bạn tạo thêm
+// ... import các routes khác
 
-// 4. Cấu hình Middleware cơ bản
-// Cho phép Express đọc JSON từ request body
-app.use(express.json());
-// Cho phép Express đọc dữ liệu từ form URL-encoded (nếu cần)
-app.use(express.urlencoded({ extended: true }));
+const app = express();
 
-// (Tùy chọn) Thêm middleware cho CORS nếu frontend và backend chạy trên các domain/port khác nhau
-const cors = require('cors');
-app.use(cors());
+// 4. Cấu hình Middleware
+app.use(cors()); // Cho phép kết nối từ các domain khác (frontend)
+app.use(express.json()); // Đọc JSON từ request body
+app.use(express.urlencoded({ extended: true })); // Đọc dữ liệu từ form
 
-// 5. Kết nối Database
-connectDB();
+// 5. Định nghĩa các API Routes
+app.use('/api/khachhang', khachhangRoutes);
+app.use('/api/phong', phongRoutes);
+// app.use('/api/doingu', doinguRoutes); // Ví dụ
+// ...
 
-// 6. Định nghĩa các API Routes
-// Gắn các router vào một đường dẫn cơ sở cụ thể
-// Ví dụ: mọi request tới /api/users sẽ được xử lý bởi userRoutes
-app.use('/api/users', userRoutes);
-// Ví dụ: mọi request tới /api/products sẽ được xử lý bởi productRoutes
-//app.use('/api/products', productRoutes);
-
-// Nếu bạn sử dụng file index.js để gom các route:
-// app.use('/api', apiRoutes); // Mọi API sẽ bắt đầu bằng /api
-
-// 7. Định nghĩa một route mặc định hoặc route kiểm tra sức khỏe (health check)
-app.get('/', (req, res) => {
-    res.send('Chào mừng đến với API của bạn! (vui lòng truy cập /api/<tên_resource>)');
-});
-
-// 8. Xử lý lỗi (Middleware lỗi) - Luôn đặt sau tất cả các routes và middleware khác
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Có lỗi xảy ra trên server!');
-});
-
-// 9. Cấu hình Swagger cho tài liệu API
+// 6. Cấu hình Swagger
 const swaggerOptions = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'HomeStay API',
+            title: 'Nam\'s Homestay API',
             version: '1.0.0',
+            description: 'Tài liệu API cho dự án Quản lý Homestay',
         },
+        servers: [
+            {
+                url: `http://localhost:${process.env.PORT || 3000}`,
+                description: 'Development server'
+            }
+        ]
     },
-    apis: ['./src/routes/*.js'], // Đường dẫn tới các file route để tự động sinh docs
+    apis: ['./src/routes/*.js'], // Đường dẫn tới các file có chứa comment Swagger
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// 10. Khởi động Server
+// 7. Route mặc định và Health Check
+app.get('/', (req, res) => {
+    res.json({ 
+        message: 'Chào mừng đến với API của Nam\'s Homestay!',
+        docs: '/api-docs' 
+    });
+});
+
+// 8. Xử lý lỗi 404 - Route không tồn tại
+// Middleware này sẽ được chạy nếu không có route nào khớp với request
+app.use('*', (req, res) => {
+    res.status(404).json({ message: `Không tìm thấy đường dẫn ${req.originalUrl}` });
+});
+
+// 9. Middleware xử lý lỗi tập trung - Luôn đặt ở cuối cùng
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Có lỗi xảy ra trên server!', error: err.message });
+});
+
+// 10. Khởi động Server sau khi kết nối DB thành công
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server đang chạy trên cổng ${port}`);
-    console.log(`Truy cập: http://localhost:${port}`);
+connectDB().then(() => {
+    app.listen(port, () => {
+        console.log(`Server đang chạy trên cổng ${port}`);
+        console.log(`Database đã kết nối thành công.`);
+        console.log(`Truy cập API docs tại: http://localhost:${port}/api-docs`);
+    });
+}).catch(err => {
+    console.error('Không thể khởi động server do lỗi kết nối database.', err);
+    process.exit(1);
 });
