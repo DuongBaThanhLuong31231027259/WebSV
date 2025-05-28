@@ -1,11 +1,11 @@
-// Import đúng hàm getDB từ connection.js
 const { getDB, sql } = require('../db/connection');
 
 const phongModel = {
   async getAllWithPrices() {
     try {
-      // SỬA Ở ĐÂY: Bỏ `await` vì getDB giờ là hàm đồng bộ.
-      const pool = getDB(); 
+      const pool = getDB();
+      // ### THAY ĐỔI CÂU LỆNH SQL ###
+      // Thêm LEFT JOIN với bảng ANHPHONG để lấy thêm DuongLink của ảnh
       const result = await pool.request().query(`
         SELECT
             p.MaPhong,
@@ -15,18 +15,21 @@ const phongModel = {
             p.ThongTinPhong,
             p.TinhTrangPhong,
             gp.DonViTinh,
-            gp.Gia
+            gp.Gia,
+            ap.DuongLink AS AnhPhongLink
         FROM
             PHONG AS p
         LEFT JOIN
             GIAPHONG AS gp ON p.MaPhong = gp.MaPhong
+        LEFT JOIN
+            ANHPHONG AS ap ON p.MaPhong = ap.MaPhong
         ORDER BY
-            p.MaPhong, gp.DonViTinh;
+            p.MaPhong, gp.DonViTinh, ap.MaAnhPhong;
       `);
       return result.recordset;
     } catch (err) {
-      console.error('Lỗi truy vấn SQL:', err); // Log lỗi chi tiết
-      throw err; // Ném lỗi ra để controller bắt
+      console.error('Lỗi truy vấn SQL:', err);
+      throw err;
     }
   }
 };

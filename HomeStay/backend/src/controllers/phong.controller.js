@@ -1,11 +1,7 @@
-const phongModel = require('../db/phong.model');
+// SỬA ĐƯỜNG DẪN Ở ĐÂY: từ '../db/phong.model' thành '../models/phong.model'
+const phongModel = require('../models/phong.model');
 
 const phongController = {
-  /**
-   * Xử lý yêu cầu lấy danh sách tất cả các phòng cùng với giá.
-   * @param {object} req - Đối tượng request của Express.
-   * @param {object} res - Đối tượng response của Express.
-   */
   async getAllPhongWithGia(req, res) {
     try {
       const data = await phongModel.getAllWithPrices();
@@ -13,36 +9,34 @@ const phongController = {
       if (!data || data.length === 0) {
         return res.status(404).json({ message: 'Không tìm thấy thông tin phòng nào.' });
       }
-
-      // Nhóm các mức giá (theo giờ, ngày) vào từng phòng tương ứng
+      
       const phongData = {};
       data.forEach(row => {
-        const { MaPhong, TenPhong, LoaiPhong, HangPhong, ThongTinPhong, TinhTrangPhong, DonViTinh, Gia } = row;
+        const { MaPhong, DonViTinh, Gia, AnhPhongLink } = row;
 
         if (!phongData[MaPhong]) {
           phongData[MaPhong] = {
-            MaPhong,
-            TenPhong,
-            LoaiPhong,
-            HangPhong,
-            ThongTinPhong,
-            TinhTrangPhong,
-            GiaPhong: [] // Tạo mảng để chứa các mức giá
+            MaPhong: row.MaPhong,
+            TenPhong: row.TenPhong,
+            LoaiPhong: row.LoaiPhong,
+            HangPhong: row.HangPhong,
+            ThongTinPhong: row.ThongTinPhong,
+            TinhTrangPhong: row.TinhTrangPhong,
+            GiaPhong: [],
+            AnhPhong: []
           };
         }
 
-        // Thêm thông tin giá vào phòng
-        if (DonViTinh && Gia) {
-          phongData[MaPhong].GiaPhong.push({
-            DonViTinh,
-            Gia
-          });
+        if (DonViTinh && Gia && !phongData[MaPhong].GiaPhong.some(p => p.DonViTinh === DonViTinh)) {
+          phongData[MaPhong].GiaPhong.push({ DonViTinh, Gia });
+        }
+
+        if (AnhPhongLink && !phongData[MaPhong].AnhPhong.includes(AnhPhongLink)) {
+          phongData[MaPhong].AnhPhong.push(AnhPhongLink);
         }
       });
 
-      // Chuyển đổi đối tượng đã nhóm thành một mảng để trả về
       const result = Object.values(phongData);
-
       res.status(200).json(result);
     } catch (error) {
       res.status(500).json({
