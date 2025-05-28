@@ -1,56 +1,99 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
-
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url('https://static.vecteezy.com/system/resources/thumbnails/008/617/161/small/abstract-gradient-pastel-blue-and-purple-background-neon-pastel-color-template-for-website-or-presentation-free-free-vector.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    backdrop-filter: blur(3px);
+    color: #fff;
+}
 header {
-    background: #35424a;
-    color: #ffffff;
-    padding: 10px 0;
+    padding: 2rem 0;
+    background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
 }
-
-h1 {
-    margin: 0;
+header h1 {
+    font-size: 1.4rem;
+    color: #00ffff;
 }
-
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+.menu nav {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem 0;
 }
-
-footer {
-    background: #35424a;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-.card {
-    background: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.button {
-    display: inline-block;
-    font-size: 16px;
-    color: #ffffff;
-    background: #35424a;
-    padding: 10px 15px;
+.menu a {
+    color: white;
     text-decoration: none;
-    border-radius: 5px;
+    margin: 0 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.menu a:hover {
+    color: #00ffff;
+}
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.content {
+    display: flex;
+    flex: 1;
+    padding: 2rem;
+}
+.main-content {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    color: #222;
+}
+.main-content h2 {
+    color: #44005f;
+    margin-bottom: 1rem;
+}
+footer {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    color: white;
 }
 
-.button:hover {
-    background: #45a049;
+/* === CSS được bổ sung cho bảng người dùng === */
+#usersTable {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    overflow: hidden; /* Để bo góc hoạt động */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#usersTable th, #usersTable td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+    color: #333;
+}
+
+#usersTable th {
+    background-color: #1e90ff;
+    color: white;
+    font-weight: bold;
+}
+
+#usersTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#usersTable tr:hover {
+    background-color: #e6f7ff;
 }

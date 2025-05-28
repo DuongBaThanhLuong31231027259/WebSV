@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <title>NAMS Homestay - Trang chủ</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <style>
+        :root {
+            --color-nams-white: #FFFFFF;
+            --color-nams-beige: #F8F5EE;
+            --color-nams-wood-light: #CBAE8B;
+            --color-nams-gray-light: #ECECEC;
+            --color-nams-gray-dark: #3A3A3A;
+            --color-nams-black: #1A1A1A;
+            --color-nams-terracotta: #A64B2A;
+            --color-nams-terracotta-dark: #7A351E;
+            --color-nams-moss-green: #5C7A60;
+            --color-nams-hue-purple: #8A2BE2;
+        }
+
+        .text-nams-terracotta { color: var(--color-nams-terracotta); }
+        .bg-nams-terracotta { background-color: var(--color-nams-terracotta); }
+        .hover\:bg-nams-terracotta-dark:hover { background-color: var(--color-nams-terracotta-dark); }
+        .text-nams-moss-green { color: var(--color-nams-moss-green); }
+        .bg-nams-moss-green { background-color: var(--color-nams-moss-green); }
+        .bg-nams-beige { background-color: var(--color-nams-beige); }
+        .text-nams-gray-dark { color: var(--color-nams-gray-dark); }
+        .bg-nams-wood-light { background-color: var(--color-nams-wood-light); }
+        .text-nams-black { color: var(--color-nams-black); }
+        .bg-nams-gray-dark { background-color: var(--color-nams-gray-dark); }
+        
+        /* Cập nhật style cho button chính và các icon */
+        .btn-primary {
+            background-color: var(--color-nams-terracotta);
+            color: var(--color-nams-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: var(--color-nams-terracotta-dark);
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+        }
+        .icon-nams-terracotta { color: var(--color-nams-terracotta); }
+        .icon-nams-moss-green { color: var(--color-nams-moss-green); }
+    </style>
+</head>
+<body class="bg-nams-beige font-[Plus Jakarta Sans]">
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 bg-white/80 px-6 sm:px-10 py-4 shadow-sm backdrop-blur-md">
+                <div class="flex items-center gap-3 text-nams-gray-dark">
+                    <svg class="w-8 h-8 text-nams-terracotta" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+                    <h2 class="text-nams-black text-xl font-bold leading-tight">NAMS Homestay</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-x-6">
+                    <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="homepage.html">Trang chủ</a>
+                    <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="room.html">Phòng & Trải nghiệm</a>
+                    <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="gallery.html">Bộ sưu tập ảnh</a>
+                    <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="about.html">Về NAMS</a>
+                    <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="blog.html">Blog</a>
+                    <a class="bg-nams-terracotta hover:bg-nams-terracotta-dark text-white text-base font-medium leading-normal px-4 py-2 rounded transition-colors" href="booking.html">Đặt phòng</a>
+                </nav>
+                <button class="md:hidden nav-toggle p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-nams-terracotta">
+                    <span class="material-symbols-outlined text-nams-gray-dark">menu</span>
+                </button>
+            </header>
+
+            <main class="flex flex-col">
+                <section class="relative flex flex-col items-center justify-center bg-gray-100 py-24 text-center">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1920');">
+                        <div class="absolute inset-0 bg-black opacity-50"></div>
+                    </div>
+                    <div class="relative z-10 px-4 sm:px-6 lg:px-8 max-w-4xl">
+                        <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">NAMS Homestay: Bình Yên Nơi Xứ Huế, Vibe Chill Trọn Kỳ Nghỉ</h1>
+                        <p class="text-gray-200 text-lg sm:text-xl leading-relaxed mb-8">Nơi bình yên bạn kiếm tìm, với kiến trúc mộc mạc kết hợp Scandinavian và nét Huế tinh tế, mang lại trải nghiệm Comfy, Cozy, Chill.</p>
+                        <a class="btn-primary text-lg" href="room.html">
+                            Khám phá Phòng <span class="material-symbols-outlined ml-2 text-sm">arrow_right_alt</span>
+                        </a>
+                    </div>
+                </section>
+
+                <section class="py-16 bg-white">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 class="text-3xl font-bold text-nams-black mb-8">Về NAMS Homestay</h2>
+                        <p class="max-w-3xl mx-auto text-nams-gray-dark text-lg leading-relaxed mb-12">
+                            Bắt đầu từ một nhà nghỉ cũ được cải tạo, NAMS Homestay (Home) ra đời vào năm 2023, mang trong mình tinh thần phóng khoáng của bờ Nam sông Hương và sự tinh tế của kiến trúc Scandinavian pha lẫn nét Á Đông. Chúng tôi cam kết mang lại không gian thoải mái (Comfy), ấm cúng (Cozy) và mát mẻ (Chill) cho mọi du khách.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-nams-beige p-6 rounded-lg shadow-sm">
+                                <span class="material-symbols-outlined icon-nams-terracotta text-5xl mb-4">home</span>
+                                <h3 class="text-xl font-semibold text-nams-black mb-2">Comfy</h3>
+                                <p class="text-nams-gray-dark leading-relaxed">Thư giãn trong không gian được thiết kế để mang lại sự thoải mái tối đa.</p>
+                            </div>
+                            <div class="bg-nams-beige p-6 rounded-lg shadow-sm">
+                                <span class="material-symbols-outlined icon-nams-moss-green text-5xl mb-4">fireplace</span>
+                                <h3 class="text-xl font-semibold text-nams-black mb-2">Cozy</h3>
+                                <p class="text-nams-gray-dark leading-relaxed">Trải nghiệm sự ấm cúng như ở nhà trong môi trường được chọn lọc kỹ lưỡng.</p>
+                            </div>
+                            <div class="bg-nams-beige p-6 rounded-lg shadow-sm">
+                                <span class="material-symbols-outlined icon-nams-terracotta text-5xl mb-4">self_improvement</span>
+                                <h3 class="text-xl font-semibold text-nams-black mb-2">Chill</h3>
+                                <p class="text-nams-gray-dark leading-relaxed">Thả lỏng và tận hưởng bầu không khí thư thái, dễ chịu của NAMS.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="py-16 bg-nams-beige">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="text-3xl font-bold text-nams-black text-center mb-12">Các Loại Phòng Nổi Bật</h2>
+                        <div id="phong-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                           <p class="col-span-3 text-center text-nams-gray-dark">Đang tải danh sách phòng...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="py-16 bg-white">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 class="text-3xl font-bold text-nams-black mb-8">Khám phá Huế cùng NAMS</h2>
+                        <p class="max-w-3xl mx-auto text-nams-gray-dark text-lg leading-relaxed mb-12">
+                            NAMS Homestay là điểm khởi đầu hoàn hảo cho hành trình khám phá vẻ đẹp trầm mặc nhưng cũng rất đỗi lãng mạn của Cố đô Huế.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                           <div class="p-6 bg-nams-beige rounded-lg shadow-sm">
+                                <span class="material-symbols-outlined icon-nams-moss-green text-5xl mb-4">local_dining</span>
+                                <h3 class="text-xl font-semibold text-nams-black mb-2">Ẩm thực cung đình</h3>
+                                <p class="text-nams-gray-dark">Thưởng thức những món ăn đặc sản Huế, từ bún bò đến chè hẻm.</p>
+                            </div>
+                            <div class="p-6 bg-nams-beige rounded-lg shadow-sm">
+                                <span class="material-symbols-outlined icon-nams-terracotta text-5xl mb-4">bike_scooter</span>
+                                <h3 class="text-xl font-semibold text-nams-black mb-2">Đạp xe quanh sông Hương</h3>
+                                <p class="text-nams-gray-dark">Tận hưởng không khí trong lành và cảnh đẹp hai bờ sông.</p>
+                            </div>
+                            <div class="p-6 bg-nams-beige rounded-lg shadow-sm">
+                                <span class="material-symbols-outlined icon-nams-moss-green text-5xl mb-4">museum</span>
+                                <h3 class="text-xl font-semibold text-nams-black mb-2">Thăm Đại Nội & Chùa cổ</h3>
+                                <p class="text-nams-gray-dark">Khám phá các di tích lịch sử và văn hóa độc đáo của Huế.</p>
+                            </div>
+                        </div>
+                        <div class="mt-12">
+                            <a href="blog.html" class="btn-primary">Xem thêm Hoạt động</a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="bg-nams-gray-dark text-nams-beige py-12">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div class="flex items-center justify-center gap-3 mb-4">
+                        <svg class="w-7 h-7 text-nams-terracotta" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+                        <h2 class="text-lg font-bold leading-tight">NAMS Homestay</h2>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6 max-w-2xl mx-auto">
+                        NAMS Homestay - Nơi bình yên giữa lòng Huế. Trải nghiệm Comfy, Cozy, Chill cùng không gian Scandinavian pha nét Huế tinh tế.
+                    </p>
+                    <div class="flex justify-center gap-x-6 mb-6">
+                        <a class="hover:text-nams-terracotta transition-colors text-sm" href="https://www.facebook.com/namshomestay" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        <a class="hover:text-nams-terracotta transition-colors text-sm" href="mailto:nams.homestay@email.com">Email</a>
+                        <a class="hover:text-nams-terracotta transition-colors text-sm" href="tel:+84123456789">Điện thoại</a> </div>
+                    <p class="text-xs leading-normal opacity-75">
+                        © 2023 NAMS Homestay. All rights reserved.
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const phongContainer = document.getElementById('phong-container');
+            // Thay đổi URL này nếu backend của bạn chạy trên một port khác
+            const apiUrl = 'http://localhost:3000/api/phong/with-prices'; 
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Lỗi mạng: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(phongData => {
+                    // Xóa thông báo "Đang tải..."
+                    phongContainer.innerHTML = ''; 
+
+                    // Lặp qua từng phòng và tạo card tương ứng
+                    phongData.forEach(phong => {
+                        // Tìm giá theo ngày từ mảng giá
+                        const giaNgay = phong.GiaPhong.find(g => g.DonViTinh.toLowerCase() === 'ngày');
+                        // Định dạng giá tiền cho đẹp
+                        const displayPrice = giaNgay 
+                            ? `${new Intl.NumberFormat('vi-VN').format(giaNgay.Gia)} VNĐ/ngày` 
+                            : 'Liên hệ để biết giá';
+
+                        // Tạo HTML cho mỗi card phòng
+                        const phongCard = document.createElement('div');
+                        phongCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden flex flex-col';
+                        phongCard.innerHTML = `
+                            <img src="https://via.placeholder.com/400x250?text=${encodeURIComponent(phong.TenPhong)}" alt="Phòng ${phong.TenPhong}" class="w-full h-56 object-cover"/>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-semibold text-nams-black mb-2">${phong.TenPhong} (${phong.LoaiPhong})</h3>
+                                <p class="text-nams-gray-dark text-sm mb-4">${phong.ThongTinPhong}</p>
+                                <div class="flex justify-between items-center mb-4 mt-auto pt-4">
+                                    <span class="text-2xl font-bold text-nams-terracotta">${displayPrice}</span>
+                                </div>
+                                <a href="room.html?id=${phong.MaPhong}" class="btn-primary w-full">Xem chi tiết & Đặt phòng</a>
+                            </div>
+                        `;
+                        
+                        // Thêm card vào container
+                        phongContainer.appendChild(phongCard);
+                    });
+                })
+                .catch(error => {
+                    console.error('Không thể tải dữ liệu phòng:', error);
+                    phongContainer.innerHTML = '<p class="text-center text-nams-terracotta col-span-3">Xảy ra lỗi khi tải danh sách phòng. Vui lòng thử lại sau.</p>';
+                });
+        });
+    </script>
+</body>
+</html>

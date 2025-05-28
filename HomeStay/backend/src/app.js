@@ -11,24 +11,16 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const { connectDB } = require('./db/connection');
 
 // 3. Import các file routes của dự án
-const khachhangRoutes = require('./routes/khachhang.routes');
-const phongRoutes = require('./routes/phong.routes');
-// const doinguRoutes = require('./routes/doingu.routes'); // Ví dụ khi bạn tạo thêm
-// ... import các routes khác
-
+const phongRoutes = require('./routes/phong.routes'); // Routes cho phòng
 const app = express();
 
 // 4. Cấu hình Middleware
-app.use(cors()); // Cho phép kết nối từ các domain khác (frontend)
-app.use(express.json()); // Đọc JSON từ request body
-app.use(express.urlencoded({ extended: true })); // Đọc dữ liệu từ form
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // 5. Định nghĩa các API Routes
-app.use('/api/khachhang', khachhangRoutes);
-app.use('/api/phong', phongRoutes);
-// app.use('/api/doingu', doinguRoutes); // Ví dụ
-// ...
-
+app.use('/api/phong', phongRoutes); //
 // 6. Cấu hình Swagger
 const swaggerOptions = {
     definition: {
@@ -45,7 +37,8 @@ const swaggerOptions = {
             }
         ]
     },
-    apis: ['./src/routes/*.js'], // Đường dẫn tới các file có chứa comment Swagger
+    // <<< THAY ĐỔI Ở ĐÂY >>>
+    apis: ['./routes/*.js'], // Đường dẫn tới các file có chứa comment Swagger
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
@@ -60,18 +53,17 @@ app.get('/', (req, res) => {
 });
 
 // 8. Xử lý lỗi 404 - Route không tồn tại
-// Middleware này sẽ được chạy nếu không có route nào khớp với request
 app.use('*', (req, res) => {
     res.status(404).json({ message: `Không tìm thấy đường dẫn ${req.originalUrl}` });
 });
 
-// 9. Middleware xử lý lỗi tập trung - Luôn đặt ở cuối cùng
+// 9. Middleware xử lý lỗi tập trung
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: 'Có lỗi xảy ra trên server!', error: err.message });
 });
 
-// 10. Khởi động Server sau khi kết nối DB thành công
+// 10. Khởi động Server
 const port = process.env.PORT || 3000;
 connectDB().then(() => {
     app.listen(port, () => {

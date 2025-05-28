@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <title>NAMS Homestay - Về NAMS</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <style>
+        /* Các biến CSS cho màu sắc tùy chỉnh */
+        :root {
+            --color-nams-white: #FFFFFF;
+            --color-nams-beige: #F8F5EE;
+            --color-nams-wood-light: #CBAE8B;
+            --color-nams-gray-light: #ECECEC;
+            --color-nams-gray-dark: #3A3A3A;
+            --color-nams-black: #1A1A1A;
+
+            --color-nams-terracotta: #A64B2A;
+            --color-nams-terracotta-dark: #7A351E;
+            --color-nams-moss-green: #5C7A60;
+            --color-nams-hue-purple: #8A2BE2;
+        }
+
+        /* Định nghĩa màu tùy chỉnh cho Tailwind */
+        .text-nams-terracotta { color: var(--color-nams-terracotta); }
+        .bg-nams-terracotta { background-color: var(--color-nams-terracotta); }
+        .hover\:bg-nams-terracotta-dark:hover { background-color: var(--color-nams-terracotta-dark); }
+
+        .text-nams-moss-green { color: var(--color-nams-moss-green); }
+        .bg-nams-moss-green { background-color: var(--color-nams-moss-green); }
+
+        .bg-nams-beige { background-color: var(--color-nams-beige); }
+        .text-nams-gray-dark { color: var(--color-nams-gray-dark); }
+        .bg-nams-wood-light { background-color: var(--color-nams-wood-light); }
+        .text-nams-black { color: var(--color-nams-black); }
+        .bg-nams-gray-dark { background-color: var(--color-nams-gray-dark); }
+
+        /* Material Symbols Outlined */
+        .material-symbols-outlined {
+            font-variation-settings:
+                "FILL" 1,
+                "wght" 700,
+                "GRAD" 0,
+                "opsz" 48;
+            color: var(--color-nams-gray-dark);
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-nams-beige font-[Plus Jakarta Sans]">
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+        <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 bg-white/80 px-6 sm:px-10 py-4 shadow-sm backdrop-blur-md">
+            <div class="flex items-center gap-3 text-nams-gray-dark">
+                <svg class="w-8 h-8 text-nams-terracotta" fill="none" viewBox="0 0 48 48" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+                <h2 class="text-nams-black text-xl font-bold leading-tight">NAMS Homestay</h2>
+            </div>
+            <nav class="hidden md:flex items-center gap-x-6">
+                <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="homepage.html">Trang chủ</a>
+                <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="room.html">Phòng & Trải nghiệm</a>
+                <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="gallery.html">Bộ sưu tập ảnh</a>
+                <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="about.html">Về NAMS</a>
+                <a class="text-nams-gray-dark hover:text-nams-terracotta text-base font-medium leading-normal transition-colors" href="blog.html">Blog</a>
+                <a class="bg-nams-terracotta hover:bg-nams-terracotta-dark text-white text-base font-medium leading-normal px-4 py-2 rounded transition-colors" href="booking.html">Đặt phòng</a>
+            </nav>
+            <button class="md:hidden nav-toggle p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-nams-terracotta">
+                <span class="material-symbols-outlined text-nams-gray-dark">menu</span>
+            </button>
+        </header>
+
+        <main class="flex flex-col">
+            <section class="bg-white py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-nams-black mb-6">Về NAMS Homestay</h1>
+                    <p class="max-w-4xl mx-auto text-nams-gray-dark text-lg leading-relaxed">
+                        NAMS Homestay, một doanh nghiệp tư nhân quy mô nhỏ tại Huế, chính thức đi vào hoạt động năm 2023. Nơi đây từng là một nhà nghỉ cũ, được chúng tôi mua lại và tái tân trang hoàn toàn, tuy vẫn giữ nguyên cấu trúc 6 phòng ban đầu. Qua quá trình hoạt động, NAMS đã điều chỉnh phong cách để phù hợp hơn với đối tượng khách hàng mục tiêu và mang đến một trải nghiệm nghỉ dưỡng độc đáo tại Cố đô.
+                    </p>
+                </div>
+            </section>
+
+            <section class="bg-nams-beige py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-nams-black mb-6">Tên gọi NAMS: Dấu ấn bản địa và tinh thần thiết kế</h2>
+                        <p class="text-nams-gray-dark leading-relaxed mb-4">
+                            Tên gọi "NAMS" mang đậm dấu ấn địa phương, lấy cảm hứng từ vị trí homestay tại **bờ Nam sông Hương**. Trong khi bờ Bắc Huế mang vẻ cổ kính và trầm mặc, bờ Nam lại mang đến một cảm giác tươi mới và thư thái hơn. NAMS Homestay thể hiện sự gắn kết với vẻ đẹp tự nhiên, phóng khoáng và nhẹ nhàng của vùng đất này.
+                        </p>
+                        <p class="text-nams-gray-dark leading-relaxed">
+                            Thiết kế của NAMS, với những nét đơn giản nhưng tinh tế, phản ánh chính tinh thần này, tạo nên một không gian hài hòa với thiên nhiên và mang đến cho khách hàng cảm giác gần gũi, dễ chịu và thư giãn.
+                        </p>
+                    </div>
+                    <div class="relative h-64 sm:h-80 lg:h-96 w-full rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://via.placeholder.com/800x600?text=NAMS+Logo+Meaning" alt="NAMS Homestay Logo" class="absolute inset-0 w-full h-full object-cover"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold text-nams-black mb-10">Phong cách Scandinavian pha nét Huế</h2>
+                    <div class="max-w-4xl mx-auto">
+                        <img src="https://via.placeholder.com/1200x600?text=NAMS+Decor" alt="NAMS Homestay Décor" class="w-full h-auto rounded-lg shadow-xl mb-8"/>
+                        <p class="text-nams-gray-dark text-lg leading-relaxed mb-6">
+                            Phong cách của NAMS Homestay là sự kết hợp hài hòa giữa sự nhẹ nhàng đặc trưng của xứ Huế và nét phóng khoáng, dịu dàng của **Scandinavian**. Chúng tôi không hẳn là Scandinavian thuần túy, mà là sự pha trộn tinh tế với các yếu tố mộc mạc, tự nhiên, gợi nhớ phong cách **Rustic** hoặc **Wabi-Sabi**, cùng một chút dấu ấn **Á Đông**.
+                        </p>
+                        <p class="text-nams-gray-dark text-lg leading-relaxed mb-6">
+                            Không gian được bài trí tối giản, ưu tiên công năng sử dụng, tạo sự mạch lạc và thông thoáng. Bảng màu chủ đạo là các tông **trung tính như trắng, be, nâu gỗ**, mang lại bầu không khí nhẹ nhàng, thư thái. Vật liệu tự nhiên, đặc biệt là gỗ, đóng vai trò quan trọng, tăng thêm sự ấm áp và gần gũi. Ánh sáng tự nhiên được tận dụng tối đa, tạo không gian sáng sủa.
+                        </p>
+                        <p class="text-nams-gray-dark text-lg leading-relaxed">
+                            Những chi tiết như chữ Hán "南" hay đồ gốm thủ công đã tạo nên một không gian độc đáo, ấm cúng và gần gũi, phản ánh tinh thần NAMS Homestay.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-nams-beige py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold text-nams-black mb-10">Giá trị cốt lõi: Comfy, Cozy, Chill</h2>
+                    <p class="max-w-3xl mx-auto text-nams-gray-dark text-lg leading-relaxed mb-12">
+                        NAMS Homestay không chỉ cung cấp một nơi lưu trú, mà còn tạo ra một trải nghiệm thoải mái toàn diện cho khách hàng, thông qua những không gian phòng được thiết kế riêng biệt và độc đáo, đáp ứng nhu cầu đa dạng của khách hàng.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
+                            <span class="material-symbols-outlined icon-nams-terracotta text-5xl mb-4">bed</span>
+                            <h3 class="text-xl font-semibold text-nams-black mb-2">Comfy</h3>
+                            <p class="text-nams-gray-dark text-center leading-relaxed">Thư giãn trong không gian được thiết kế cho sự thoải mái tối đa và yên bình.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
+                            <span class="material-symbols-outlined icon-nams-moss-green text-5xl mb-4">local_fire_department</span>
+                            <h3 class="text-xl font-semibold text-nams-black mb-2">Cozy</h3>
+                            <p class="text-nams-gray-dark text-center leading-relaxed">Cảm nhận sự ấm cúng như ở nhà trong môi trường được chăm chút tỉ mỉ.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
+                            <span class="material-symbols-outlined icon-nams-terracotta text-5xl mb-4">self_improvement</span>
+                            <h3 class="text-xl font-semibold text-nams-black mb-2">Chill</h3>
+                            <p class="text-nams-gray-dark text-center leading-relaxed">Thả lỏng và tận hưởng bầu không khí thư thái, dễ chịu của NAMS.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <h2 class="text-3xl font-bold text-nams-black mb-6">Khách hàng mục tiêu: Nơi dành cho Gen Z và Gen Y</h2>
+                        <p class="text-nams-gray-dark leading-relaxed mb-4">
+                            NAMS Homestay tập trung vào nhóm khách hàng trẻ tuổi, đặc biệt là **Gen Z và Gen Y** nội địa, những người yêu thích không gian mang "vibe" trẻ trung, ấm cúng, cozy, gentle và chill. Khách hàng chủ yếu đến từ các tỉnh thành lân cận Huế, cho thấy sự thành công trong việc thu hút thị trường khu vực.
+                        </p>
+                        <p class="text-nams-gray-dark leading-relaxed">
+                            **Định hướng tương lai:** NAMS Homestay sẽ mở rộng thêm chi nhánh mới ở phía Nam, mang phong cách tương tự nhưng hiện đại hơn, và hướng tới phân khúc khách nước ngoài. Chi nhánh mới sẽ nâng cao chất lượng phòng và dịch vụ với mức giá cao hơn, bổ sung cafeteria và hồ bơi, mang lại sự thoải mái và tiện nghi vượt trội.
+                        </p>
+                    </div>
+                    <div class="relative h-64 sm:h-80 lg:h-96 w-full rounded-lg overflow-hidden shadow-xl order-1 lg:order-2">
+                        <img src="https://via.placeholder.com/800x600?text=Target+Audience" alt="Khách hàng mục tiêu" class="absolute inset-0 w-full h-full object-cover"/>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-nams-beige py-12">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <svg class="w-7 h-7 text-nams-terracotta" fill="none" viewBox="0 0 48 48" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+                    <h2 class="text-nams-beige text-lg font-bold leading-tight">NAMS Homestay</h2>
+                </div>
+                <p class="text-sm leading-relaxed mb-6">
+                    NAMS Homestay - Nơi bình yên giữa lòng Huế. Trải nghiệm Comfy, Cozy, Chill cùng không gian Scandinavian pha nét Huế tinh tế.
+                </p>
+                <div class="flex justify-center gap-x-6 mb-6">
+                    <a class="text-nams-beige hover:text-nams-terracotta transition-colors text-sm" href="https://www.facebook.com/namshomestay" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a class="text-nams-beige hover:text-nams-terracotta transition-colors text-sm" href="mailto:nams.homestay@email.com">Email</a>
+                    <a class="text-nams-beige hover:text-nams-terracotta transition-colors text-sm" href="tel:+84123456789">Điện thoại</a>
+                </div>
+                <p class="text-xs leading-normal opacity-75">
+                    © 2023 NAMS Homestay. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+/* css/style.css */
+
+/* Các biến CSS cho màu sắc tùy chỉnh (Scandinavian + Chất Huế) */
+:root {
+    --color-nams-white: #FFFFFF;
+    --color-nams-beige: #F8F5EE;
+    --color-nams-wood-light: #CBAE8B;
+    --color-nams-gray-light: #ECECEC;
+    --color-nams-gray-dark: #3A3A3A;
+    --color-nams-black: #1A1A1A;
+    --color-nams-terracotta: #A64B2A;
+    --color-nams-terracotta-dark: #7A351E;
+    --color-nams-moss-green: #5C7A60;
+    --color-nams-hue-purple: #8A2BE2;
+}
+
+/* Quy tắc chung cho body */
+body {
+    background-color: var(--color-nams-beige);
+    font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+    color: var(--color-nams-gray-dark);
+    line-height: 1.6;
+}
+
+/* Global Styles for Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-nams-black);
+    font-weight: 700;
+}
+
+p {
+    color: var(--color-nams-gray-dark);
+}
+
+a {
+    color: var(--color-nams-terracotta);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-nams-terracotta-dark);
+}
+
+/* Custom Styles for Buttons */
+.btn-primary {
+    background-color: var(--color-nams-terracotta);
+    color: var(--color-nams-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-nams-terracotta-dark);
+}
+
+/* Custom Styles for Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    border: 1px solid var(--color-nams-wood-light);
+    border-radius: 0.375rem;
+    padding: 0.625rem 1rem;
+    background-color: var(--color-nams-white);
+    color: var(--color-nams-gray-dark);
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-nams-terracotta);
+    box-shadow: 0 0 0 2px rgba(166, 75, 42, 0.2);
+}
+
+/* Styles for Material Symbols Outlined */
+.material-symbols-outlined {
+    font-variation-settings:
+        "FILL" 1,
+        "wght" 700,
+        "GRAD" 0,
+        "opsz" 48;
+    color: var(--color-nams-gray-dark);
+}
+
+/* Specific icon colors */
+.icon-nams-terracotta {
+    color: var(--color-nams-terracotta);
+}
+.icon-nams-moss-green {
+    color: var(--color-nams-moss-green);
+}
+
+/* Gallery Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    object-fit: contain;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Gallery Filter Styles */
+.active-filter {
+    color: var(--color-nams-black);
+    border-bottom: 2px solid var(--color-nams-terracotta);
+    font-weight: 700;
+}
+
+.inactive-filter {
+    color: var(--color-nams-gray-dark);
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.inactive-filter:hover {
+    color: var(--color-nams-black);
+    border-bottom-color: var(--color-nams-wood-light);
+}
+
+/* === FOOTER STYLES === */
+footer {
+    background-color: var(--color-nams-beige) !important; /* Light beige for warmth and brightness */
+    color: var(--color-nams-white) !important; /* White text for all elements */
+    padding: 2rem 1rem; /* Spacious padding for a fresh feel */
+}
+
+footer p, footer h3, footer a, footer span {
+    color: var(--color-nams-white) !important; /* White text for p, h3, a, and span */
+}
+
+footer a:hover {
+    color: var(--color-nams-hue-purple) !important; /* Vibrant purple on hover for links */
+}
+
+footer svg {
+    color: var(--color-nams-white) !important; /* White for SVG if present */
+}
+
+/* Fallback for bg-nams-gray-dark class */
+footer.bg-nams-gray-dark {
+    background-color: var(--color-nams-beige) !important;
+    color: var(--color-nams-white) !important;
+}
+
+footer.bg-nams-gray-dark p, footer.bg-nams-gray-dark h3, footer.bg-nams-gray-dark a, footer.bg-nams-gray-dark span {
+    color: var(--color-nams-white) !important;
+}
+
+footer.bg-nams-gray-dark a:hover {
+    color: var(--color-nams-hue-purple) !important;
+}
+
+footer.bg-nams-gray-dark svg {
+    color: var(--color-nams-white) !important;
+}
+/* === END FOOTER STYLES === */
