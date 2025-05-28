@@ -36,7 +36,6 @@
         .text-nams-black { color: var(--color-nams-black); }
         .bg-nams-gray-dark { background-color: var(--color-nams-gray-dark); }
         
-        /* Cập nhật style cho button chính và các icon */
         .btn-primary {
             background-color: var(--color-nams-terracotta);
             color: var(--color-nams-white);
@@ -82,13 +81,13 @@
 
             <main class="flex flex-col">
                 <section class="relative flex flex-col items-center justify-center bg-gray-100 py-24 text-center">
-                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1920');">
+                    <div id="hero-background" class="absolute inset-0 bg-cover bg-center transition-all duration-500" style="background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1920');">
                         <div class="absolute inset-0 bg-black opacity-50"></div>
                     </div>
                     <div class="relative z-10 px-4 sm:px-6 lg:px-8 max-w-4xl">
                         <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">NAMS Homestay: Bình Yên Nơi Xứ Huế, Vibe Chill Trọn Kỳ Nghỉ</h1>
                         <p class="text-gray-200 text-lg sm:text-xl leading-relaxed mb-8">Nơi bình yên bạn kiếm tìm, với kiến trúc mộc mạc kết hợp Scandinavian và nét Huế tinh tế, mang lại trải nghiệm Comfy, Cozy, Chill.</p>
-                        <a class="btn-primary text-lg" href="room.html">
+                        <a class="btn-primary text-lg" href="booking.html">
                             Khám phá Phòng <span class="material-symbols-outlined ml-2 text-sm">arrow_right_alt</span>
                         </a>
                     </div>
@@ -183,7 +182,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const phongContainer = document.getElementById('phong-container');
-            // Thay đổi URL này nếu backend của bạn chạy trên một port khác
+            const heroBackground = document.getElementById('hero-background');
             const apiUrl = 'http://localhost:3000/api/phong/with-prices'; 
 
             fetch(apiUrl)
@@ -194,34 +193,48 @@
                     return response.json();
                 })
                 .then(phongData => {
-                    // Xóa thông báo "Đang tải..."
+                    
+                    // --- BỔ SUNG: CẬP NHẬT ẢNH NỀN HERO ---
+                    // Gộp tất cả các ảnh từ tất cả các phòng vào một mảng duy nhất
+                    const allImages = phongData.flatMap(p => p.AnhPhong || []);
+                    if (allImages.length > 0) {
+                        // Chọn một ảnh ngẫu nhiên
+                        const randomIndex = Math.floor(Math.random() * allImages.length);
+                        const randomImageUrl = allImages[randomIndex];
+                        // Cập nhật style của div nền
+                        heroBackground.style.backgroundImage = `url('${randomImageUrl}')`;
+                    }
+                    // --- KẾT THÚC BỔ SUNG ---
+
+
+                    // --- PHẦN HIỂN THỊ CÁC PHÒNG NỔI BẬT (Giữ nguyên) ---
                     phongContainer.innerHTML = ''; 
 
-                    // Lặp qua từng phòng và tạo card tương ứng
                     phongData.forEach(phong => {
-                        // Tìm giá theo ngày từ mảng giá
                         const giaNgay = phong.GiaPhong.find(g => g.DonViTinh.toLowerCase() === 'ngày');
-                        // Định dạng giá tiền cho đẹp
                         const displayPrice = giaNgay 
                             ? `${new Intl.NumberFormat('vi-VN').format(giaNgay.Gia)} VNĐ/ngày` 
                             : 'Liên hệ để biết giá';
 
-                        // Tạo HTML cho mỗi card phòng
+                        const imageUrl = phong.AnhPhong && phong.AnhPhong.length > 0
+                            ? phong.AnhPhong[0]
+                            : `https://via.placeholder.com/400x250?text=${encodeURIComponent(phong.TenPhong)}`;
+
                         const phongCard = document.createElement('div');
                         phongCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden flex flex-col';
+                        
                         phongCard.innerHTML = `
-                            <img src="https://via.placeholder.com/400x250?text=${encodeURIComponent(phong.TenPhong)}" alt="Phòng ${phong.TenPhong}" class="w-full h-56 object-cover"/>
+                            <img src="${imageUrl}" alt="Phòng ${phong.TenPhong}" class="w-full h-56 object-cover"/>
                             <div class="p-6 flex flex-col flex-grow">
                                 <h3 class="text-xl font-semibold text-nams-black mb-2">${phong.TenPhong} (${phong.LoaiPhong})</h3>
                                 <p class="text-nams-gray-dark text-sm mb-4">${phong.ThongTinPhong}</p>
                                 <div class="flex justify-between items-center mb-4 mt-auto pt-4">
                                     <span class="text-2xl font-bold text-nams-terracotta">${displayPrice}</span>
                                 </div>
-                                <a href="room.html?id=${phong.MaPhong}" class="btn-primary w-full">Xem chi tiết & Đặt phòng</a>
+                                <a href="booking.html?id=${phong.MaPhong}" class="btn-primary w-full">Xem chi tiết & Đặt phòng</a>
                             </div>
                         `;
                         
-                        // Thêm card vào container
                         phongContainer.appendChild(phongCard);
                     });
                 })

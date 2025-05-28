@@ -12,6 +12,7 @@ const { connectDB } = require('./db/connection');
 
 // 3. Import các file routes của dự án
 const phongRoutes = require('./routes/phong.routes'); // Routes cho phòng
+const bookingRoutes = require('./routes/booking.routes'); 
 const app = express();
 
 // 4. Cấu hình Middleware
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // 5. Định nghĩa các API Routes
 app.use('/api/phong', phongRoutes); //
+app.use('/api/booking', bookingRoutes);
 // 6. Cấu hình Swagger
 const swaggerOptions = {
     definition: {
